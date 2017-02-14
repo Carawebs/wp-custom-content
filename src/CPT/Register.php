@@ -1,10 +1,11 @@
 <?php
-namespace Carawebs\WPCustomContent\CPT;
+namespace Carawebs\CustomContent\CPT;
 
 /**
 * Class to register CPTs
 */
-class Register {
+class Register
+{
 
     /**
     * Slug to register the CPT
@@ -30,14 +31,11 @@ class Register {
     */
     private $labels;
 
-    public function __construct ( $slug, $singular_name, $plural_name ) {
-
+    public function setName($slug, $singular_name, $plural_name)
+    {
         $this->slug = $slug;
         $this->singular_name = $singular_name;
         $this->plural = $plural_name;
-        $this->set_labels();
-        $this->custom_messages();
-
     }
 
     /**
@@ -46,7 +44,7 @@ class Register {
     * These will be dependent upon the chosen slug/name, so they probably don't need
     * to be overridden in the child class.
     */
-    protected function set_labels () {
+    public function set_labels () {
 
         $this->labels = [
             'name'                => _x( ucfirst( $this->plural ), 'Post Type General Name', 'CARAWEBS' ),

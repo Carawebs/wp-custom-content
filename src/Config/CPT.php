@@ -1,10 +1,10 @@
 <?php
-namespace Carawebs\WPCustomContent\Config;
+namespace Carawebs\CustomContent\Config;
 
 /**
 * Get the data from a specified config file
 */
-class CPT extends ArrayAccess {
+class CPT implements \ArrayAccess {
 
     public $container = [];
 
