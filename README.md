@@ -1,5 +1,6 @@
 # WP CPT
 A WordPress plugin which registers:
+
 - Custom post types
 - Custom taxonomies
 
@@ -13,6 +14,7 @@ Sample config files are provided in the `/sample-config` directory.
 By default, the plugin looks for config files in the Bedrock `config` directory - which is outside the document root for the project. If you're using a regular WordPress installation, you may need to fork this plugin and modify the path to the config files:
 
 ~~~php
+<?php
 // See: `/custom-content.php`
 require_once(ABSPATH . 'wp-admin/includes/file.php');
 $path = dirname(get_home_path()) . '/config/';
