@@ -4,7 +4,9 @@ A WordPress plugin which registers:
 - Custom post types
 - Custom taxonomies
 
-This plugin is designed for use with [Bedrock](https://roots.io/bedrock/). Bedrock has an improved project structure compared to regular WordPress installations. [Bedrock on Packagist](https://packagist.org/packages/roots/bedrock).
+This plugin is designed for use with [Bedrock](https://roots.io/bedrock/). Bedrock has an improved project structure compared to regular WordPress installations.
+
+- [Bedrock on Packagist](https://packagist.org/packages/roots/bedrock).
 
 The plugin is intended as an aid for developers - there is no settings GUI.
 
