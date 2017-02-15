@@ -18,9 +18,9 @@ if ( ! defined( 'WPINC' ) ) {
     die;
 }
 require_once(ABSPATH . 'wp-admin/includes/file.php');
-$path = dirname(get_home_path());
-define('CARAWEBS_CUSTOM_CONTENT_CONFIG', '/var/www/html/cpt.dev/config/cpt-config.php');
-define('CARAWEBS_CUSTOM_TAX_CONFIG', '/var/www/html/cpt.dev/config/tax-config.php');
+$path = dirname(get_home_path()) . '/config/';
+define('CARAWEBS_CUSTOM_CONTENT_CONFIG', $path . 'cpt-config.php');
+define('CARAWEBS_CUSTOM_TAX_CONFIG', $path . 'tax-config.php');
 
 function setupCPTs()
 {
