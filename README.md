@@ -8,7 +8,7 @@ This plugin is designed for use with [Bedrock](https://roots.io/bedrock/). Bedro
 
 The plugin is intended as an aid for developers - there is no settings GUI.
 
-Instead, a configuration file which returns a PHP array is used to register custom post types and taxonomies. This means you can easily define custom content for your project by simply amending an array.
+Instead, a configuration file which returns a PHP array is used to register custom post types and taxonomies. This means you can easily define custom post types and taxonomies for your project by simply amending an array.
 
 ## Config Files
 Sample config files are provided in the `/sample-config` directory.
