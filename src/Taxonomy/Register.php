@@ -1,28 +1,25 @@
 <?php
-namespace Carawebs\WPCustomContent\Taxonomy;
+namespace Carawebs\CustomContent\Taxonomy;
 
 /**
 * Class registers service category custom taxonomy
 */
 class Register extends CustomTaxonomy {
 
-    function __construct() {
-
-        $this->tax_slug = 'project-category';
-        $this->singular_name = 'project category';
-        $this->plural_name = 'project categories';
-        $this->cpts = ['project'];
-        $this->set_labels();
-
+    public function setVariables(array $taxConfig)
+    {
+        $this->tax_slug = $taxConfig['slug'];
+        $this->singular_name = $taxConfig['singular_name'];
+        $this->plural_name = $taxConfig['plural_name'];
+        $this->cpts = $taxConfig['related_CPTs'];
+        $this->overrideArgs = $taxConfig['override_args'] ?? [];
+        return $this;
     }
 
     public function init() {
 
-        $args =[
-            'hierarchical' => false,
-        ];
-
-        $this->register( $args );
+        $this->setLabels();
+        $this->register();
 
     }
 
