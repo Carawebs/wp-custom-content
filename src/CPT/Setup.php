@@ -4,14 +4,16 @@ namespace Carawebs\CustomContent\CPT;
 /**
 * Control setup of custom post types.
 */
-class Setup {
+class Setup
+{
 
     /**
      * Set properies, run the setup
      * @param Config   $config A config object (ArrayAccess) that defines the CPTs
      * @param Register $loader The class object that registers the CPTs.
      */
-    function __construct(Config $config, Register $loader) {
+    function __construct(Config $config, Register $loader)
+    {
         $this->loader = $loader;
         $this->setCPTs($config);
         $this->init();

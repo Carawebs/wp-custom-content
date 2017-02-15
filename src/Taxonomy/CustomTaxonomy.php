@@ -4,9 +4,11 @@ namespace Carawebs\CustomContent\Taxonomy;
 /**
 * Base class that registers Custom taxonomies
 */
-abstract class CustomTaxonomy {
+abstract class CustomTaxonomy
+{
 
-    public function setLabels() {
+    public function setLabels()
+    {
 
         $this->labels = [
             'name'                       => __( ucwords($this->plural_name), 'carawebs-cpt' ),
@@ -29,7 +31,8 @@ abstract class CustomTaxonomy {
 
     }
 
-    public function register() {
+    public function register()
+    {
 
         $args = [
 
@@ -51,7 +54,6 @@ abstract class CustomTaxonomy {
         ];
 
         $args = array_merge( $args, $this->overrideArgs );
-
         register_taxonomy( $this->tax_slug, $this->cpts, $args );
 
     }

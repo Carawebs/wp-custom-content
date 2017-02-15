@@ -44,7 +44,8 @@ class Register
     * These will be dependent upon the chosen slug/name, so they probably don't need
     * to be overridden in the child class.
     */
-    public function set_labels () {
+    public function set_labels ()
+    {
 
         $this->labels = [
             'name'                => _x( ucfirst( $this->plural ), 'Post Type General Name', 'CARAWEBS' ),
@@ -74,7 +75,8 @@ class Register
     * @param  array $override Arguments for `register_post_type()` to override defaults
     * @return void
     */
-    public function register( array $override = [] ) {
+    public function register(array $override = [])
+    {
 
         $defaults = [
             'label'               => __( ucfirst( $this->singular_name ), 'CARAWEBS' ),
@@ -96,9 +98,9 @@ class Register
             'capability_type'     => 'page',
         ];
 
-        $args = is_array( $override ) ? array_merge( $defaults, $override ) : $default;
+        $args = is_array($override) ? array_merge($defaults, $override) : $default;
 
-        register_post_type( $this->slug, $args );
+        register_post_type($this->slug, $args);
 
     }
 
@@ -111,13 +113,12 @@ class Register
     * @param  array $messages Default messages to override
     * @return array $messages Filtered messages
     */
-    public function messages( $messages ) {
+    public function messages($messages)
+    {
 
         global $post;
-
         $permalink = get_permalink( $post );
         $capname = ucfirst( $this->singular_name );
-
         $messages[$this->slug] = [
 
             0 => '', // Unused. Messages start at index 1.

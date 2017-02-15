@@ -4,7 +4,8 @@ namespace Carawebs\CustomContent\Taxonomy;
 /**
 * Class registers service category custom taxonomy
 */
-class Register extends CustomTaxonomy {
+class Register extends CustomTaxonomy
+{
 
     public function setVariables(array $taxConfig)
     {
@@ -16,7 +17,8 @@ class Register extends CustomTaxonomy {
         return $this;
     }
 
-    public function init() {
+    public function init()
+    {
 
         $this->setLabels();
         $this->register();
