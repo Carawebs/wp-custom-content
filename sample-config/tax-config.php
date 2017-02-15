@@ -1,7 +1,5 @@
 <?php
-if ( ! defined( 'WPINC' ) ) {
-    die;
-}
+if ( ! defined( 'ABSPATH' ) ) exit;
 $taxonomies = [
     [
         'slug'          => 'project-category',

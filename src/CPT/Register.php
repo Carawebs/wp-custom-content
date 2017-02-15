@@ -31,11 +31,26 @@ class Register
     */
     private $labels;
 
-    public function setName($slug, $singular_name, $plural_name)
+    public function setVariables(array $CPTConfig)
     {
-        $this->slug = $slug;
-        $this->singular_name = $singular_name;
-        $this->plural = $plural_name;
+        $this->slug = $CPTConfig['slug'];
+        $this->singular_name = $CPTConfig['singular_name'];
+        $this->plural = $CPTConfig['plural_name'];
+        $this->setLabels();
+        $this->customMessages();
+        $this->setOverrides($CPTConfig['args']);
+        return $this;
+    }
+
+    // public function setName($slug, $singular_name, $plural_name)
+    // {
+    //     $this->slug = $slug;
+    //     $this->singular_name = $singular_name;
+    //     $this->plural = $plural_name;
+    // }
+    public function setOverrides($overrides)
+    {
+        $this->overrides = $overrides;
     }
 
     /**
@@ -44,7 +59,7 @@ class Register
     * These will be dependent upon the chosen slug/name, so they probably don't need
     * to be overridden in the child class.
     */
-    public function set_labels ()
+    public function setLabels ()
     {
 
         $this->labels = [
@@ -75,7 +90,7 @@ class Register
     * @param  array $override Arguments for `register_post_type()` to override defaults
     * @return void
     */
-    public function register(array $override = [])
+    public function init()
     {
 
         $defaults = [
@@ -98,7 +113,7 @@ class Register
             'capability_type'     => 'page',
         ];
 
-        $args = is_array($override) ? array_merge($defaults, $override) : $default;
+        $args = is_array($this->overrides) ? array_merge($defaults, $this->overrides) : $default;
 
         register_post_type($this->slug, $args);
 
@@ -173,7 +188,8 @@ class Register
     * @return void
     *
     */
-    public function custom_messages() {
+    public function customMessages()
+    {
 
         add_filter( 'post_updated_messages', [ $this, 'messages'] );
 

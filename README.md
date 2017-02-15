@@ -20,14 +20,10 @@ By default, the plugin looks for config files in the Bedrock `config` directory 
 ~~~php
 <?php
 // See: `/custom-content.php`
-// Config file definitions:
-require_once(ABSPATH . 'wp-admin/includes/file.php');
-$path = dirname(get_home_path()) . '/config/';
-
-// Define path to CPT config file.
+$path = dirname(ABSPATH, 2) . '/config/';
+// Define the path to the config file for CPTs:
 define('CARAWEBS_CUSTOM_CONTENT_CONFIG', $path . 'cpt-config.php');
-
-// Define path to custom taxonomy config file.
+// Define the path for the config file for custom taxonomies:
 define('CARAWEBS_CUSTOM_TAX_CONFIG', $path . 'tax-config.php');
 ~~~
 

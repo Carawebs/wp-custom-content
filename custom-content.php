@@ -18,9 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 require( dirname( __FILE__ ) . '/autoloader.php' );
 
-require_once(ABSPATH . 'wp-admin/includes/file.php');
-$path = dirname(get_home_path()) . '/config/';
+$path = dirname(ABSPATH, 2) . '/config/';
+// Define the path to the config file for CPTs:
 define('CARAWEBS_CUSTOM_CONTENT_CONFIG', $path . 'cpt-config.php');
+// Define the path for the config file for custom taxonomies:
 define('CARAWEBS_CUSTOM_TAX_CONFIG', $path . 'tax-config.php');
 
 function setupCPTs()
