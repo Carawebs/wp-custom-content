@@ -1,7 +1,7 @@
 {
     "name": "carawebs/wp-custom-content",
-    "description": "A Wordpress plugin that generates custom post types and taxonomies from a config file.",
-    "type": "wordpress-plugin",
+    "description": "A library that generates WordPress custom post types and taxonomies from a config file.",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
