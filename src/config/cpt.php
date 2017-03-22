@@ -12,18 +12,10 @@ $cpts = [
         ]
     ],
     [
-        'slug'          => 'landing-page',
-        'singular_name' => 'Landing Page',
-        'plural_name'   => 'Landing Pages',
-        'args'          => ['menu_icon' => 'dashicons-cart']
-
-    ],
-    [
         'slug'          => 'person',
         'singular_name' => 'person',
         'plural_name'   => 'people',
         'args'          => ['menu_icon' => 'dashicons-groups']
-
     ]
 ];
 
