@@ -75,6 +75,7 @@ class Register
             'edit_item'           => __( 'Edit ' . ucfirst( $this->singular_name ), 'CARAWEBS' ),
             'update_item'         => __( 'Update ' . ucfirst( $this->singular_name ), 'CARAWEBS' ),
             'view_item'           => __( 'View ' . ucfirst( $this->singular_name ), 'CARAWEBS' ),
+            'view_items'           => __( 'View ' . ucfirst( $this->plural ), 'CARAWEBS' ),
             'search_items'        => __( 'Search ' . ucfirst( $this->plural ), 'CARAWEBS' ),
             'not_found'           => __( 'Not found', 'CARAWEBS' ),
             'not_found_in_trash'  => __( 'Not found in Trash', 'CARAWEBS' ),
