@@ -22,7 +22,7 @@ Instead, a configuration file which returns a PHP array is used to register cust
 ## Config Files
 Sample config files are provided in the `/sample-config` directory.
 
-By default, the plugin looks for config files in the Bedrock `config` directory - which is outside the document root for the project. If you're using a regular WordPress installation, you may need to fork this plugin and modify the path to the config files:
+By default, the plugin looks for config files in the `config` directory. You could amend this  - which is outside the document root for the project. If you're using a regular WordPress installation, you may need to fork this plugin and modify the path to the config files:
 
 ~~~php
 <?php
