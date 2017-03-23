@@ -18,22 +18,29 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 require( dirname( __FILE__ ) . '/autoloader.php' );
 
-$path = dirname(ABSPATH, 2) . '/config/';
+// Bedrock config directory
+//$path = dirname(ABSPATH, 2) . '/config/';
+
+// Config directory in this package
+$path = dirname(__FILE__) . '/config/';
+
 // Define the path to the config file for CPTs:
-define('CARAWEBS_CUSTOM_CONTENT_CONFIG', $path . 'cpt-config.php');
+define('CARAWEBS_CPT_CONFIG', $path . 'cpt.php');
 // Define the path for the config file for custom taxonomies:
-define('CARAWEBS_CUSTOM_TAX_CONFIG', $path . 'tax-config.php');
+define('CARAWEBS_CUSTOM_TAX_CONFIG', $path . 'tax.php');
 
 function setupCPTs()
 {
+    if (!file_exists(CARAWEBS_CPT_CONFIG)) return;
     $CPTSetup = new CPT\Setup(
-        new CPT\Config(CARAWEBS_CUSTOM_CONTENT_CONFIG),
+        new CPT\Config(CARAWEBS_CPT_CONFIG),
         new CPT\Register()
     );
 }
 
 function setupCustomTax()
 {
+    if (!file_exists(CARAWEBS_CUSTOM_TAX_CONFIG)) return;
     $TaxSetup = new Taxonomy\Setup(
         new Taxonomy\Config(CARAWEBS_CUSTOM_TAX_CONFIG),
         new Taxonomy\Register()

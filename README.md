@@ -4,9 +4,16 @@ A WordPress plugin which registers:
 - Custom post types
 - Custom taxonomies
 
-This plugin is designed for use with [Bedrock](https://roots.io/bedrock/). Bedrock has an improved project structure compared to regular WordPress installations.
+If you want to use this as a Composer package, rather than as a WordPress plugin, use the `dev-library` branch:
 
-- [Bedrock on Packagist](https://packagist.org/packages/roots/bedrock).
+~~~js
+// composer.json for project
+"carawebs/wp-custom-content": "dev-library"
+~~~
+I don't recommend this - the `dev-library` is a bit of an experiment in de-coupling custom post type registration from themes and plugins and is probably a step too far. CPT registration is probably best managed in either a plugin or mu-plugin). That branch does have quite an interesting method of loading, and a fluent interface to set the config file location.
+
+## Usage
+This plugin is designed for use with [Bedrock](https://roots.io/bedrock/). Bedrock has an improved project structure compared to regular WordPress installations.
 
 The plugin is intended as an aid for developers - there is no settings GUI.
 
