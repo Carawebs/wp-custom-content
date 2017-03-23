@@ -14,6 +14,14 @@ Domain Path:       /languages
 */
 namespace Carawebs\CustomContent;
 
+/**
+ * @TODO:
+ * This becomes a singleton class.
+ * The config file should:
+ * - Look in Bedrock config location first
+ * - Fallback to `/config/`
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 require( dirname( __FILE__ ) . '/autoloader.php' );
