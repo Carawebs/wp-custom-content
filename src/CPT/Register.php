@@ -2,7 +2,7 @@
 namespace Carawebs\CustomContent\CPT;
 
 /**
-* Class to register CPTs
+* Class to register a custom post type.
 */
 class Register
 {
@@ -31,6 +31,11 @@ class Register
     */
     private $labels;
 
+    /**
+     * Set variables for the custom post type being registered.
+     *
+     * @param array $CPTConfig Configuration data for this CPT
+     */
     public function setVariables(array $CPTConfig)
     {
         $this->slug = $CPTConfig['slug'];
@@ -42,12 +47,10 @@ class Register
         return $this;
     }
 
-    // public function setName($slug, $singular_name, $plural_name)
-    // {
-    //     $this->slug = $slug;
-    //     $this->singular_name = $singular_name;
-    //     $this->plural = $plural_name;
-    // }
+    /**
+     * Set override arguments
+     * @param array $overrides Override arguments
+     */
     public function setOverrides($overrides)
     {
         $this->overrides = $overrides;
@@ -61,7 +64,6 @@ class Register
     */
     public function setLabels ()
     {
-
         $this->labels = [
             'name'                => _x( ucfirst( $this->plural ), 'Post Type General Name', 'CARAWEBS' ),
             'singular_name'       => _x( ucfirst( $this->singular_name ), 'Post Type Singular Name', 'CARAWEBS' ),
@@ -75,11 +77,10 @@ class Register
             'edit_item'           => __( 'Edit ' . ucfirst( $this->singular_name ), 'CARAWEBS' ),
             'update_item'         => __( 'Update ' . ucfirst( $this->singular_name ), 'CARAWEBS' ),
             'view_item'           => __( 'View ' . ucfirst( $this->singular_name ), 'CARAWEBS' ),
-            'view_items'           => __( 'View ' . ucfirst( $this->plural ), 'CARAWEBS' ),
+            'view_items'          => __( 'View ' . ucfirst( $this->plural ), 'CARAWEBS' ),
             'search_items'        => __( 'Search ' . ucfirst( $this->plural ), 'CARAWEBS' ),
             'not_found'           => __( 'Not found', 'CARAWEBS' ),
             'not_found_in_trash'  => __( 'Not found in Trash', 'CARAWEBS' ),
-
         ];
     }
 
@@ -93,7 +94,6 @@ class Register
     */
     public function init()
     {
-
         $defaults = [
             'label'               => __( ucfirst( $this->singular_name ), 'CARAWEBS' ),
             'description'         => __( ucfirst( $this->singular_name ) . ' posts', 'CARAWEBS' ),
@@ -115,9 +115,7 @@ class Register
         ];
 
         $args = is_array($this->overrides) ? array_merge($defaults, $this->overrides) : $default;
-
         register_post_type($this->slug, $args);
-
     }
 
     /**
@@ -131,12 +129,10 @@ class Register
     */
     public function messages($messages)
     {
-
         global $post;
         $permalink = get_permalink( $post );
         $capname = ucfirst( $this->singular_name );
         $messages[$this->slug] = [
-
             0 => '', // Unused. Messages start at index 1.
             1 => sprintf( __('%s updated. <a target="_blank" href="%s">View %s</a>', 'CARAWEBS'),
                 $capname,
@@ -176,11 +172,8 @@ class Register
                 esc_url( add_query_arg( 'preview', 'true', $permalink ) ),#
                 $this->singular_name
             ),
-
         ];
-
         return $messages;
-
     }
 
     /**
@@ -191,9 +184,7 @@ class Register
     */
     public function customMessages()
     {
-
         add_filter( 'post_updated_messages', [ $this, 'messages'] );
-
     }
 
 }
