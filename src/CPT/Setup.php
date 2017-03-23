@@ -47,9 +47,10 @@ class Setup
     protected function init()
     {
         foreach( $this->CPTs as $CPT ) {
-            add_action( 'init', function() use( $CPT ) {
-                $this->register->setVariables($CPT)->init();
-            });
+            $this->register->setVariables($CPT)->init();
+            // add_action( 'init', function() use( $CPT ) {
+            //     $this->register->setVariables($CPT)->init();
+            // });
         }
     }
 }

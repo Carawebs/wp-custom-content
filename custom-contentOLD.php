@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name:       Carawebs Custom Content Types
+Plugin Name:       XXXCarawebs Custom Content Types
 Plugin URI:        http://carawebs.com
 Description:       Build custom post types and taxonomies from a configuration file.
 Version:           0.1
@@ -29,43 +29,33 @@ define('CARAWEBS_CPT_CONFIG', $path . 'cpt.php');
 // Define the path for the config file for custom taxonomies:
 define('CARAWEBS_CUSTOM_TAX_CONFIG', $path . 'tax.php');
 
-function bootstrap()
+function setupCPTs()
 {
     if (!file_exists(CARAWEBS_CPT_CONFIG)) return;
-    add_action( 'init', function() {
-        setupCPTs();
-    });
-
-    if (!file_exists(CARAWEBS_CUSTOM_TAX_CONFIG)) return;
-    add_action( 'init', function() {
-        setupCustomTaxonomies();
-    });
-}
-
-function setupCPTs() {
-    new CPT\Setup(
+    $CPTSetup = new CPT\Setup(
         new CPT\Config(CARAWEBS_CPT_CONFIG),
         new CPT\Register()
     );
 }
 
-function setupCustomTaxonomies()
+function setupCustomTax()
 {
+    if (!file_exists(CARAWEBS_CUSTOM_TAX_CONFIG)) return;
     $TaxSetup = new Taxonomy\Setup(
         new Taxonomy\Config(CARAWEBS_CUSTOM_TAX_CONFIG),
         new Taxonomy\Register()
     );
+
 }
 
 add_action( 'plugins_loaded', function() {
     autoload();
-    bootstrap();
+    setupCPTs();
+    setupCustomTax();
 });
 
 register_activation_hook( __FILE__, function() {
-    autoload();
     setupCPTs();
-    setupCustomTaxonomies();
     flush_rewrite_rules();
 });
 

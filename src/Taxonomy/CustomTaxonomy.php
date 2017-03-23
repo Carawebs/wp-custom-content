@@ -6,10 +6,8 @@ namespace Carawebs\CustomContent\Taxonomy;
 */
 abstract class CustomTaxonomy
 {
-
     public function setLabels()
     {
-
         $this->labels = [
             'name'                       => __( ucwords($this->plural_name), 'carawebs-cpt' ),
             'singular_name'              => _x( $this->singular_name, 'taxonomy general name', 'carawebs-cpt' ),
@@ -28,14 +26,11 @@ abstract class CustomTaxonomy
             'choose_from_most_used'      => __( 'Choose from the most used ' . $this->plural_name, 'carawebs-cpt' ),
             'menu_name'                  => __( ucwords($this->plural_name), 'carawebs-cpt' ),
         ];
-
     }
 
     public function register()
     {
-
         $args = [
-
             'hierarchical'      => true,
             'public'            => true,
             'show_ui'           => true,
@@ -55,7 +50,5 @@ abstract class CustomTaxonomy
 
         $args = array_merge( $args, $this->overrideArgs );
         register_taxonomy( $this->tax_slug, $this->cpts, $args );
-
     }
-
 }

@@ -19,10 +19,7 @@ class Register extends CustomTaxonomy
 
     public function init()
     {
-
         $this->setLabels();
         $this->register();
-
     }
-
 }

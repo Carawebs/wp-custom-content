@@ -36,9 +36,7 @@ class Setup
     protected function init()
     {
         foreach( $this->taxConfig as $tax ) {
-            add_action( 'init', function() use( $tax ) {
-                $this->loader->setVariables($tax)->init();
-            });
+            $this->loader->setVariables($tax)->init();
         }
     }
 }
