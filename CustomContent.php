@@ -21,9 +21,34 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 */
 class CustomContent
 {
+    /**
+     * Refers to a single instance of this class
+     * @var Object|NULL
+     */
+    private static $instance = NULL;
+
+    /**
+     * Path to config file for custom post types
+     * @var string
+     */
+    private $cptConfigPath;
+
+    /**
+     * Path to config file for custom taxonomies
+     * @var string
+     */
+    private $taxConfigPath;
+
+    /**
+     * Plugin instantiation by singleton method.
+     * @return Object Object instantiated from this class
+     */
     public static function getInstance()
     {
-
+        if ( NULL == self::$instance ) {
+            self::$instance = new self;
+        }
+         return self::$instance;
     }
 
     function bootstrap()
@@ -38,21 +63,21 @@ class CustomContent
 
     private function setPaths()
     {
-        // Bedrock config directory
-        //$path = dirname(ABSPATH, 2) . '/config/';
-
-        // Config directory in this package
-        $path = dirname(__FILE__) . '/config/';
-
-        // Define the path to the config file for CPTs:
-        define('CARAWEBS_CPT_CONFIG', $path . 'cpt.php');
-        // Define the path for the config file for custom taxonomies:
-        define('CARAWEBS_CUSTOM_TAX_CONFIG', $path . 'tax.php');
+        if (file_exists( dirname(ABSPATH, 2) . '/config/custom-content')) {
+            // Bedrock config directory
+            $path = dirname(ABSPATH, 2) . '/config/custom-content/';
+        } else {
+            // Config directory in this package
+            $path = dirname(__FILE__) . '/config/';
+        }
+        // Define the paths to the config files for CPTs and custom taxonomies:
+        $this->cptConfigPath = $path . 'cpt.php';
+        $this->taxConfigPath = $path . 'tax.php';
     }
 
     private function initCustomPostTypes()
     {
-        if (!file_exists(CARAWEBS_CPT_CONFIG)) return;
+        if (!file_exists($this->cptConfigPath)) return;
         add_action( 'init', function() {
             $this->setupCPTs();
         });
@@ -60,7 +85,7 @@ class CustomContent
 
     private function initCustomTaxonomies()
     {
-        if (!file_exists(CARAWEBS_CUSTOM_TAX_CONFIG)) return;
+        if (!file_exists($this->taxConfigPath)) return;
         add_action( 'init', function() {
             $this->setupCustomTaxonomies();
         });
@@ -68,7 +93,7 @@ class CustomContent
 
     private function setupCPTs() {
         new CPT\Setup(
-            new CPT\Config(CARAWEBS_CPT_CONFIG),
+            new CPT\Config($this->cptConfigPath),
             new CPT\Register()
         );
     }
@@ -76,7 +101,7 @@ class CustomContent
     private function setupCustomTaxonomies()
     {
         $TaxSetup = new Taxonomy\Setup(
-            new Taxonomy\Config(CARAWEBS_CUSTOM_TAX_CONFIG),
+            new Taxonomy\Config($this->taxConfigPath),
             new Taxonomy\Register()
         );
     }
@@ -122,6 +147,5 @@ class CustomContent
     }
 }
 
-$plugin = new CustomContent();
+$plugin = CustomContent::getInstance();
 $plugin->bootstrap();
-//add_action('plugins_loaded', )
