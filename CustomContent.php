@@ -92,6 +92,7 @@ class CustomContent
     }
 
     private function setupCPTs() {
+        if (!file_exists($this->cptConfigPath)) return;
         new CPT\Setup(
             new CPT\Config($this->cptConfigPath),
             new CPT\Register()
@@ -100,6 +101,7 @@ class CustomContent
 
     private function setupCustomTaxonomies()
     {
+        if (!file_exists($this->taxConfigPath)) return;
         $TaxSetup = new Taxonomy\Setup(
             new Taxonomy\Config($this->taxConfigPath),
             new Taxonomy\Register()
