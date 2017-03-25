@@ -3,7 +3,7 @@
 Plugin Name:       Carawebs Custom Content Types
 Plugin URI:        http://carawebs.com
 Description:       Build custom post types and taxonomies from a configuration file.
-Version:           0.1
+Version:           1.0.1
 Author:            David Egan
 Author URI:        http://dev-notes.eu
 License:           GPL-2.0+
