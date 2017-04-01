@@ -1,5 +1,12 @@
 # WP CPT
-A library which registers WordPress custom post types and custom taxonomies. If you'd rather use this functionality as a WordPress plugin, use the master branch of this repo.
+A library which registers WordPress custom post types and custom taxonomies.
+
+If you'd rather use this functionality as a WordPress plugin, use the master branch of this repo:
+
+~~~
+// composer.json for project
+"carawebs/wp-custom-content": "dev-master"
+~~~
 
 This is designed for use with [Bedrock](https://roots.io/bedrock/). Bedrock has an improved project structure compared to regular WordPress installations.
 
